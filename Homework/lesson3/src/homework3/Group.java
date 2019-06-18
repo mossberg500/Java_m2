@@ -13,9 +13,6 @@ public class Group {
     public Group() {
         super();
     }
-//------------------------------------
-
-
     public Student[] getStud1() {
         return stud;
     }
@@ -23,13 +20,12 @@ public class Group {
     public void setStud1(Student[] stud) {
         this.stud = stud;
     }
-    //-------------------------------
 
     public Student getStud(Student[] stud, int index) {
         try {
             return stud[index];
         } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println(" Вы вышли за граници массва");
+            System.out.println(" ArrayIndexOutOfBounds ");
         }
         return new Student("","",0,0,0,false,"0","0");
     }
@@ -38,11 +34,11 @@ public class Group {
         try {
             this.stud[index] = stud;
         } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println(" Вы вышли за граници массва");
+            System.out.println(" ArrayIndexOutOfBounds ");
         }
     }
 
-    //Вывод группы для проверки
+    //Group output for verification
     public void PrintGroup(Student[] sdud) {
         for (Student x : sdud)
             System.out.println(x);
