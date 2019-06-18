@@ -21,9 +21,6 @@ public class Main {
         System.out.println("-----PrintGroup-----noSorting---------------");
         group.PrintGroup(mathematic);
 
-
-
-
         try {
             SortGroup(mathematic);
         }catch (IllegalArgumentException e){
@@ -55,7 +52,6 @@ public class Main {
 
     }
 
-
     public static Student[] setNoNull(Group group){
         for (Student x: group.getStud1()) {
             if (x == null) {
@@ -73,6 +69,4 @@ public class Main {
         }
             Arrays.sort(students);
     }
-
-
 }
