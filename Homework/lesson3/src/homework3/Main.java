@@ -30,7 +30,23 @@ public class Main {
         }
         group.PrintGroup(mathematic);
 
+        try{
+            group.setStud(new Student("William", "Vatson", 40, 90, 190, true, "Math", "Five"), 1);
+            group.setStud(new Student(), 2);
+            group.setStud(new Student(), 12);
+
+
+        }catch (ArrayIndexOutOfBoundsException ex){
+            System.out.println(" ArrayIndexOutOfBounds ");
+        }
+        SortGroup(mathematic);
+        System.out.println("--------------------------");
+        group.PrintGroup(mathematic);
+
+
     }
+
+
     public static Student[] setNoNull(Group group){
         for (Student x: group.getStud1()) {
             if (x == null) {

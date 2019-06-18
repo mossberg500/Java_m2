@@ -20,6 +20,7 @@ public class Human implements Comparable {
 
     public Human() {
         super();
+        this.surname = "";
     }
 
     public String getName() {

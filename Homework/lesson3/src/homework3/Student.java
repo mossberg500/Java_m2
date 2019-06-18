@@ -10,14 +10,9 @@ public class Student extends Human  {
         this.group = group;
     }
 
-    public Student(String faculty, String group) {
+    public Student() {
         super();
-        this.faculty = faculty;
-        this.group = group;
     }
-
-
-
 
     public String getFaculty() {
         return faculty;

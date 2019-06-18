@@ -21,26 +21,21 @@ public class Group {
         this.stud = stud;
     }
 
-    public Student getStud(Student[] stud, int index) {
-        try {
+    public Student getStud(int index) throws ArrayIndexOutOfBoundsException {
+        if(index<0 && index>this.stud.length-1)
+            throw new ArrayIndexOutOfBoundsException();
             return stud[index];
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println(" ArrayIndexOutOfBounds ");
-        }
-        return new Student("","",0,0,0,false,"0","0");
     }
 
-    public void setStud(Student stud, int index) {
-        try {
-            this.stud[index] = stud;
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println(" ArrayIndexOutOfBounds ");
-        }
+    public void setStud(Student stud, int index) throws ArrayIndexOutOfBoundsException {
+        if(index<0 && index>this.stud.length-1)
+            throw new ArrayIndexOutOfBoundsException();
+        this.stud[index] = stud;
     }
 
     //Group output for verification
-    public void PrintGroup(Student[] sdud) {
-        for (Student x : sdud)
+    public void PrintGroup(Student[] stud) {
+        for (Student x : stud)
             System.out.println(x);
     }
 
