@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 
 public class Board {
-    Shape[] figure = new  Shape[4];
+    private  Shape[] figure = new  Shape[4];
 
     public Board(Shape[] figure) {
         super();
