@@ -13,7 +13,17 @@ public class Group {
     public Group() {
         super();
     }
+//------------------------------------
 
+
+    public Student[] getStud1() {
+        return stud;
+    }
+
+    public void setStud1(Student[] stud) {
+        this.stud = stud;
+    }
+    //-------------------------------
 
     public Student getStud(Student[] stud, int index) {
         try {
