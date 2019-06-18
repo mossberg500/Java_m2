@@ -86,23 +86,12 @@ public class Human implements Comparable {
     @Override
     public int compareTo(Object o) {
         Human anotherHuman = (Human) o;
-        try {
-            if (this.surname.compareToIgnoreCase(anotherHuman.surname) > 0) {
-                return 1;
-            }
-        }catch (NullPointerException e) {
-            System.out.println(" Îáúåêò null 1");
+        if (this.surname.compareToIgnoreCase(anotherHuman.surname) > 0) {
+            return 1;
         }
-        try {
-
-
-            if (this.surname.compareToIgnoreCase(anotherHuman.surname) < 0) {
-                return -1;
-            }
-        }catch (NullPointerException e){
-            System.out.println(" Îáúåêò null -1");
+        if (this.surname.compareToIgnoreCase(anotherHuman.surname) < 0) {
+            return -1;
         }
         return 0;
-
     }
 }
