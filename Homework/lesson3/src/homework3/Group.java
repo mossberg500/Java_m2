@@ -6,11 +6,12 @@ public class Group {
     private Student[] stud = new Student[10];
 
     public Group(Student[] stud) {
+        super();
         this.stud = stud;
     }
 
     public Group() {
-
+        super();
     }
 
 
