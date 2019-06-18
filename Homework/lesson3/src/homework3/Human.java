@@ -85,6 +85,10 @@ public class Human implements Comparable {
 
     @Override
     public int compareTo(Object o) {
+        if(this == null || o == null) {
+            System.out.println("Group not sorted ");
+            return 0;
+        }
         Human anotherHuman = (Human) o;
         if (this.surname.compareToIgnoreCase(anotherHuman.surname) > 0) {
             return 1;
