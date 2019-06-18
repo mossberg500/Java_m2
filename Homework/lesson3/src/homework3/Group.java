@@ -26,12 +26,29 @@ public class Group {
             throw new ArrayIndexOutOfBoundsException();
             return stud[index];
     }
-
+    //Add student in Group
     public void setStud(Student stud, int index) throws ArrayIndexOutOfBoundsException {
         if(index<0 && index>this.stud.length-1)
             throw new ArrayIndexOutOfBoundsException();
         this.stud[index] = stud;
     }
+    //Delete student from Group (null)
+    public void delStud(int index)throws ArrayIndexOutOfBoundsException{
+        if(index<0 && index>this.stud.length-1)
+            throw new ArrayIndexOutOfBoundsException();
+        this.stud[index] = null;
+    }
+    //Find student in Group by surname
+    public Student findBySurname(String surname){
+        for (Student a : this.stud){
+            if (a.getSurname().compareToIgnoreCase(surname) == 0 )
+                return a;
+        }
+        return null;
+
+    }
+
+
 
     //Group output for verification
     public void PrintGroup(Student[] stud) {

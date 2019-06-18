@@ -18,31 +18,40 @@ public class Main {
 
         Student[] mathematic = new Student[]{stOne, stThree, stFour, null, stFive, null, stSeven, stEight, stNine, stTen};
         Group group = new Group(mathematic);
+        System.out.println("-----PrintGroup-----noSorting---------------");
         group.PrintGroup(mathematic);
-        System.out.println("--------------------------");
-//        System.out.println(Arrays.asList(mathematic).indexOf(stFour));
-  //      System.out.println("--------------------------");
+
+
+
+
         try {
             SortGroup(mathematic);
         }catch (IllegalArgumentException e){
             setNoNull(group);
             SortGroup(mathematic);
         }
+        System.out.println("--------PrintGroup-----Sorting----------------");
         group.PrintGroup(mathematic);
 
         try{
             group.setStud(new Student("William", "Vatson", 40, 90, 190, true, "Math", "Five"), 1);
             group.setStud(new Student(), 2);
-            group.setStud(new Student(), 12);
-
+            group.delStud(8);
+            System.out.println("=======delStud(8)==============");
+            group.getStud(8);
+            System.out.println("========setNoNull===========");
+            setNoNull(group);
 
         }catch (ArrayIndexOutOfBoundsException ex){
             System.out.println(" ArrayIndexOutOfBounds ");
         }
-        SortGroup(mathematic);
-        System.out.println("--------------------------");
+
+        System.out.println("-------print----setNoNull--------------------");
         group.PrintGroup(mathematic);
 
+        System.out.println();
+        System.out.println("------findBySurname Longman----------");
+        System.out.println(group.findBySurname("Longman"));
 
     }
 
