@@ -33,10 +33,9 @@ public class Main {
             group.addStud(stTen);
             group.addStud(stEleven);
             //   group.addStud(stSix);
-        } catch (MyException e) {
-            System.out.println(e.getMessage());
-        }catch (NullPointerException e){
-            System.out.println(" Enter null, added not continue");
+        }catch (MyException | NullPointerException e){
+            e.printStackTrace();
+            System.out.println("" + e.getMessage() + " or enter null, added not continue");
         }
 
       System.out.println("-----PrintGroup-----noSorting---------------");
