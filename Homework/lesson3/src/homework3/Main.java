@@ -35,7 +35,14 @@ public class Main {
             //   group.addStud(stSix);
         }catch (MyException | NullPointerException e){
             e.printStackTrace();
-            System.out.println("" + e.getMessage() + " or enter null, added not continue");
+
+            if (e instanceof MyException) {
+                System.out.println(((MyException) e).getMessage());
+
+            }else {
+                System.out.println(" Enter null, added not continue");
+            }
+
         }
 
       System.out.println("-----PrintGroup-----noSorting---------------");
