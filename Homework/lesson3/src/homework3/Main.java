@@ -67,13 +67,16 @@ public class Main {
         }
         System.out.println(group.toString());
 
-
-        System.out.println("------findBySurname Longman----------");
-
-        group.findBySurname("Longman");
+        try {
+            System.out.println("------findBySurname Longman----------");
+            group.findBySurname("Longman");
+        }catch (studentNotFoundException e){
+            System.out.println(e.getMessage());
+        }
 
         group.delStud(9);
-
+        group.setNoNull();
+        System.out.println(group.toString());
 
 
 
