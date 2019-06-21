@@ -1,26 +1,35 @@
 package homework3;
 
-public class Human implements Comparable {
+public class Human  {
     private String name;
     private String surname;
     private int age;
     private double weight;
     private double growth;
     private boolean sex;
+    private int idHuman;
+    private static int id =-1 ;
 
     public Human(String name, String surname, int age, double weight, double growth, boolean sex) {
         super();
+        idHuman = ++id;
         this.name = name;
         this.surname = surname;
         this.age = age;
         this.weight = weight;
         this.growth = growth;
         this.sex = sex;
+
     }
 
     public Human() {
         super();
+        idHuman = ++id;
         this.surname = "";
+    }
+
+    public int getIdHuman() {
+        return idHuman;
     }
 
     public String getName() {
@@ -74,6 +83,7 @@ public class Human implements Comparable {
     @Override
     public String toString() {
         return "Human{" +
+                "idHuman='" + idHuman + '\'' +
                 "name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", age=" + age +
@@ -83,19 +93,5 @@ public class Human implements Comparable {
                 '}';
     }
 
-    @Override
-    public int compareTo(Object o) {
-        if(this == null || o == null) {
-            System.out.println("Group not sorted ");
-            return 0;
-        }
-        Human anotherHuman = (Human) o;
-        if (this.surname.compareToIgnoreCase(anotherHuman.surname) > 0) {
-            return 1;
-        }
-        if (this.surname.compareToIgnoreCase(anotherHuman.surname) < 0) {
-            return -1;
-        }
-        return 0;
-    }
+
 }

@@ -3,7 +3,7 @@ package homework3;
 import java.util.Arrays;
 
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws MyException, studentNotFoundException {
         Student stOne = new Student("Ivan", "Ivanov", 22, 60, 170, true, "Biology", "Three");
         Student stTwo = new Student("Agatha", "MacDonald", 25, 65, 159, false, "Math", "Four");
         Student stThree = new Student("Bruce", "Robertson", 30, 64, 161, true, "Biology", "Two");
@@ -14,59 +14,62 @@ public class Main {
         Student stEight = new Student("Sarah", "Blare", 30, 68, 163, false, "Math", "Four");
         Student stNine = new Student("Stacey", "Longman", 25, 64, 160, false, "Biology", "Three");
         Student stTen = new Student("Wilma", "Leapman", 27, 77, 170, false, "Math", "Four");
+        Student stEleven = new Student("Adnold", "Lenon", 40, 88, 190, true, "Math", "Two");
 
 
-        Student[] mathematic = new Student[]{stOne, stThree, stFour, null, stFive, null, stSeven, stEight, stNine, stTen};
-        Group group = new Group(mathematic);
-        System.out.println("-----PrintGroup-----noSorting---------------");
-        group.PrintGroup(mathematic);
+        Group group = new Group();
+        try {
+            group.addStud(stOne);
+            group.addStud(stTwo);
+            group.addStud(stFour);
+            group.addStud(stTen);
+            group.addStud(stThree);
+            group.addStud(stNine);
+            group.addStud(stFive);
+            group.addStud(null);
+            group.addStud(stEight);
+            group.addStud(stThree);
+            group.addStud(stThree);
+            group.addStud(stTen);
+            group.addStud(stEleven);
+            //   group.addStud(stSix);
+        } catch (MyException e) {
+            System.out.println(e.getMessage());
+        }catch (NullPointerException e){
+            System.out.println(" Enter null, added not continue");
+        }
+
+      System.out.println("-----PrintGroup-----noSorting---------------");
+        System.out.println(group.toString());
+        System.out.println("--------PrintGroup-----Sorting----------------");
+        try {
+            group.SortGroup();
+        }catch (IllegalArgumentException e){
+            group.setNoNull();
+            group.SortGroup();
+        }
+        System.out.println(group.toString());
+
 
         try {
-            SortGroup(mathematic);
-        }catch (IllegalArgumentException e){
-            setNoNull(group);
-            SortGroup(mathematic);
+            group.addStud(new Student("William", "Vatson", 40, 90, 190, true, "Math", "Five"));
+            group.addStud(new Student("Mason", "Alba", 33, 90, 191, true, "Math", "Five"));
+            group.addStud(new Student("Alexander", "Cruz", 22, 60, 160, true, "Math", "Five"));
+            group.addStud(new Student("Daniel", "Oswald", 40, 90, 190, true, "Math", "Five"));
+        }catch (MyException e){
+            System.out.println(e.getMessage());
         }
-        System.out.println("--------PrintGroup-----Sorting----------------");
-        group.PrintGroup(mathematic);
+        System.out.println(group.toString());
 
-        try{
-            group.setStud(new Student("William", "Vatson", 40, 90, 190, true, "Math", "Five"), 1);
-            group.setStud(new Student(), 2);
-            group.delStud(8);
-            System.out.println("=======delStud(8)==============");
-            group.getStud(8);
-            System.out.println("========setNoNull===========");
-            setNoNull(group);
 
-        }catch (ArrayIndexOutOfBoundsException ex){
-            System.out.println(" ArrayIndexOutOfBounds ");
-        }
-
-        System.out.println("-------print----setNoNull--------------------");
-        group.PrintGroup(mathematic);
-
-        System.out.println();
         System.out.println("------findBySurname Longman----------");
-        System.out.println(group.findBySurname("Longman"));
 
-    }
+        group.findBySurname("Longman");
 
-    public static Student[] setNoNull(Group group){
-        for (Student x: group.getStud1()) {
-            if (x == null) {
-                group.setStud((new Student("", "", 0, 0, 0, false, "", "")), Arrays.asList(group.getStud1()).indexOf(x));
-            }
-        }
-        return group.getStud1();
-    }
+        group.delStud(9);
 
-    public static void SortGroup(Student[] students) throws IllegalArgumentException{
-        for (Student x: students) {
-            if (x == null) {
-                throw new IllegalArgumentException();
-            }
-        }
-            Arrays.sort(students);
+
+
+
     }
 }
