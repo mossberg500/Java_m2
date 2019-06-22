@@ -16,7 +16,6 @@ public class Main {
         Student stTen = new Student("Wilma", "Leapman", 27, 77, 170, false, "Math", "Four");
         Student stEleven = new Student("Adnold", "Lenon", 40, 88, 190, true, "Math", "Two");
 
-
         Group group = new Group();
         try {
             group.addStud(stOne);
@@ -33,36 +32,30 @@ public class Main {
             group.addStud(stTen);
             group.addStud(stEleven);
             //   group.addStud(stSix);
-        }catch (MyException | NullPointerException e){
+        } catch (MyException | NullPointerException e) {
             e.printStackTrace();
 
             if (e instanceof MyException) {
                 System.out.println(((MyException) e).getMessage());
 
-            }else {
+            } else {
                 System.out.println(" Enter null, added not continue");
             }
 
         }
-
-      System.out.println("-----PrintGroup-----noSorting---------------");
+        System.out.println("-----PrintGroup-----noSorting---------------");
         System.out.println(group.toString());
+
         System.out.println("--------PrintGroup-----Sorting----------------");
-        try {
-            group.SortGroup();
-        }catch (IllegalArgumentException e){
-            group.setNoNull();
-            group.SortGroup();
-        }
+        group.sortGroup();
         System.out.println(group.toString());
-
 
         try {
             group.addStud(new Student("William", "Vatson", 40, 90, 190, true, "Math", "Five"));
             group.addStud(new Student("Mason", "Alba", 33, 90, 191, true, "Math", "Five"));
             group.addStud(new Student("Alexander", "Cruz", 22, 60, 160, true, "Math", "Five"));
             group.addStud(new Student("Daniel", "Oswald", 40, 90, 190, true, "Math", "Five"));
-        }catch (MyException e){
+        } catch (MyException e) {
             System.out.println(e.getMessage());
         }
         System.out.println(group.toString());
@@ -70,15 +63,10 @@ public class Main {
         try {
             System.out.println("------findBySurname Longman----------");
             group.findBySurname("Longman");
-        }catch (studentNotFoundException e){
+        } catch (studentNotFoundException e) {
             System.out.println(e.getMessage());
         }
-
-        group.delStud(9);
-        group.setNoNull();
+       group.delStud(9);
         System.out.println(group.toString());
-
-
-
     }
 }

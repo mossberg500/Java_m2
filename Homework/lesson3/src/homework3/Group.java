@@ -8,8 +8,9 @@ public class Group {
     public Group(Student[] students) {
         this.students = students;
     }
+
     public Group() {
-    super();
+        super();
     }
 
     public Student[] getStudents() {
@@ -61,20 +62,25 @@ public class Group {
     }
 
 
-    public void SortGroup() throws IllegalArgumentException {
-        for (Student x : students) {
-            if (x == null) {
-                throw new IllegalArgumentException();
-            }
-        }
+    public void sortGroup() {
         Student buf;
         boolean isSorted = false;
         while (!isSorted) {
             isSorted = true;
             for (int i = 0; i < students.length - 1; i++) {
+                if (students[i] == null && students[i + 1] != null) {
+                    continue;
+                } else if (students[i] == null && students[i + 1] == null) {
+                    continue;
+                } else if (students[i] != null && students[i + 1] == null) {
+                    isSorted = false;
+                    buf = students[i];
+                    students[i] = students[i + 1];
+                    students[i + 1] = buf;
+                    continue;
+                }
                 if (students[i].getSurname().compareToIgnoreCase(students[i + 1].getSurname()) > 0) {
                     isSorted = false;
-
                     buf = students[i];
                     students[i] = students[i + 1];
                     students[i + 1] = buf;
@@ -86,25 +92,18 @@ public class Group {
 
 
     public void setStudForNottNull(Student stud, int index) throws ArrayIndexOutOfBoundsException {
-        if (index < 0 && index > this.students.length-1)
+        if (index < 0 && index > this.students.length - 1)
             throw new ArrayIndexOutOfBoundsException();
         this.students[index] = stud;
     }
 
-    public void  setNoNull() {
+    public void setNoNull() {
         for (Student x : students) {
             if (x == null) {
                 setStudForNottNull((new Student("", "", 0, 0, 0, false, "", "")), Arrays.asList(getStudents()).indexOf(x));
             }
         }
     }
-
-    //-----------------------------------------
-
-
-    //Group output for verification
-
-
     @Override
     public String toString() {
         String str = "";
