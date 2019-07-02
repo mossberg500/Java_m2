@@ -2,7 +2,9 @@ package homework4;
 
 import java.util.Arrays;
 
-public class Group {
+import javax.swing.JOptionPane;
+
+public class Group implements Conscription{
     private Student[] students = new Student[10];
 
     public Group(Student[] students) {
@@ -33,6 +35,51 @@ public class Group {
         }
         throw new MyException();
     }
+    
+public void addStudents() {
+		
+		while (true) {
+			String input = null;
+			//Student stTwo = new Student("Agatha", "MacDonald", 25, 65, 159, false, "Math", "Four");
+			input = JOptionPane.showInputDialog("Add student in format: name surname age weight growth sex faculty group"
+					+ " \n" + " name surname age weight growth sex faculty group");
+			if (input==null) {
+				break;
+			}
+			String[] fields = input.split(" ");
+			try {
+				String name = fields[0];
+				String surname = fields[1];
+				int age = Integer.valueOf(fields[2]);
+				double weight = Double.valueOf(fields[3]);
+				double growth = Double.valueOf(fields[4]);
+				boolean sex = Boolean.valueOf(fields[5]); 
+				String faculty = fields[6];
+				String group = fields[7];
+				
+				Student student = new Student(name, surname, age, weight, growth, sex, faculty, group);
+				addStud(student);
+				System.out.println(student);
+				System.out.println("===========================");
+			} catch (IndexOutOfBoundsException e1) {
+				JOptionPane.showMessageDialog(null, "Input data are incomplete");
+				continue;
+			} catch (NumberFormatException e3) {
+				JOptionPane.showMessageDialog(null, e3.getMessage());
+				continue;				
+			} catch (MyException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage());
+				break;
+				}
+		}
+	}
+    
+    
+    
+    
+    
+    
+    
 
     //Delete student from Group (null)
     public void delStud(int id) throws studentNotFoundException {
@@ -117,4 +164,23 @@ public class Group {
         }
         return str;
     }
+
+	@Override
+	public Student[] getConscripts() {
+		Student[] conscripts = new Student[students.length];
+		int i=0;
+		for (Student student : students) {
+			if ( (student!=null) 
+					&& (student.getAge() >= MILITARY_AGE)
+					&& (student.isSex() == true)) {
+				conscripts[i] = student;
+				i++;
+			}
+		}
+		Arrays.sort(conscripts, (a, b) -> CheckedNull.checkNull(a,b) != CheckedNull.NOT_NULL ? CheckedNull.checkNull(a, b) :
+            a.getSurname().compareTo(b.getSurname()));
+		return conscripts;
+		
+	}
+    
 }

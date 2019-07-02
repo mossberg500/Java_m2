@@ -28,11 +28,11 @@ public class Main {
             group.addStud(stFive);
          //   group.addStud(null);
             group.addStud(stEight);
-            group.addStud(stThree);
-            group.addStud(stThree);
-            group.addStud(stTen);
-            group.addStud(stEleven);
-            //   group.addStud(stSix);
+          //  group.addStud(stThree);
+         //   group.addStud(stThree);
+         //   group.addStud(stTen);
+         //   group.addStud(stEleven);
+               group.addStud(stSix);
         } catch (MyException | NullPointerException e) {
             e.printStackTrace();
 
@@ -50,7 +50,7 @@ public class Main {
 
         Scanner sc = new Scanner(System.in);
         int parametr = 0;
-        System.out.println("Input parametr");
+        System.out.println("Input parametr 1 - 4");
         parametr = sc.nextInt();
 
         if (parametr == 1) {
@@ -79,32 +79,19 @@ public class Main {
         }
         if (parametr == 4) {
             System.out.println("--------PrintGroup-----Sorting----getAge-DESC-----------");
-            Arrays.sort(group.getStudents(), (a, b) -> (-1)*(a.getAge() - b.getAge()));
+            Arrays.sort(group.getStudents(), (a, b) -> CheckedNull.checkNull(a,b) != CheckedNull.NOT_NULL ? CheckedNull.checkNull(a, b) :
+            		(-1)*(a.getAge() - b.getAge()));
             System.out.println(group.toString());
         }
-
-
-
-        /*
-        try {
-            group.addStud(new Student("William", "Vatson", 40, 90, 190, true, "Math", "Five"));
-            group.addStud(new Student("Mason", "Alba", 33, 90, 191, true, "Math", "Five"));
-            group.addStud(new Student("Alexander", "Cruz", 22, 60, 160, true, "Math", "Five"));
-            group.addStud(new Student("Daniel", "Oswald", 40, 90, 190, true, "Math", "Five"));
-        } catch (MyException e) {
-            System.out.println(e.getMessage());
-        }
+        
+        
+        
+        group.addStudents();
         System.out.println(group.toString());
 
-        try {
-            System.out.println("------findBySurname Longman----------");
-            group.findBySurname("Longman");
-        } catch (studentNotFoundException e) {
-            System.out.println(e.getMessage());
-        }
-        group.delStud(9);
-        System.out.println(group.toString());
-        */
+   
+        MilitaryDepartment militaryDepartment = new MilitaryDepartment();
+		militaryDepartment.getInfo(group);
 
     }
 }
