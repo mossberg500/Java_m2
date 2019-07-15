@@ -10,25 +10,41 @@ public class FIleCompare{
 		try(BufferedReader br1 = new BufferedReader(new FileReader(firstFile)); 
 				BufferedReader br2 = new BufferedReader(new FileReader(secondFile));
 				PrintWriter pwresFile = new PrintWriter(resultFile)){
-			String str1 = "";
-			String str2 = "";
+			
 			StringBuilder stringBuilder1 = new StringBuilder();
 			StringBuilder stringBuilder2 = new StringBuilder();
 			
-			while ((str1=br1.readLine()) != null){
-				String lowcase1 = str1.toLowerCase();
-				stringBuilder1.append(lowcase1).append(" ");
-			}
-			
-			while ((str2=br2.readLine()) != null){
-				String lowcase2 = str2.toLowerCase();
-				stringBuilder2.append(lowcase2).append(" ");
-			}
+			filetoString(br1, stringBuilder1);
+			filetoString(br2, stringBuilder2);
 			
 			String[] string1 = stringBuilder1.substring(0).split(" ");
-		
 			String[] string2 = stringBuilder2.substring(0).split(" ");
 								
+			pwresFile.println(toStringRes(string1, string2));
+			
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+		public static void filetoString(BufferedReader br, StringBuilder stringBuilder) throws IOException {
+			String str = "";
+			try {
+			while ((str=br.readLine()) != null){
+				String lowcase = str.toLowerCase();
+				stringBuilder.append(lowcase).append(" ");
+			}
+			}
+			catch (IOException e) {
+				throw e;
+			}
+			
+			
+			
+			
+		}
+		public static String toStringRes(String[] string1, String[] string2) {
 			String resStr = "";
 			for (int j = 0; j < string1.length; j++) {
 				for (int i = 0; i < string2.length; i++) {
@@ -43,14 +59,10 @@ public class FIleCompare{
 				}
 				
 			}
-			
-			pwresFile.println(resStr);
-			
+			return resStr;
 		}
-		catch (IOException e) {
-			e.printStackTrace();
-		}
-}
+
+	
 	
 
 }
