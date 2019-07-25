@@ -52,7 +52,7 @@ public class FileWatcher {
                 }
                 if (i == previousFileArray.length){
                 	flag = true;
-                    sb.append("new file \"" + currentFileArray[i].getName() +"\" has been added to the folder");
+                    sb.append("new file \"" + currentFileArray[i].getName() +"\"  added to the folder");
                 }
             }
 
@@ -67,7 +67,7 @@ public class FileWatcher {
                 }
                 if (i == currentFileArray.length){
                 	flag = true;
-                    sb.append("file \"" + previousFileArray[i].getName() +"\" has been removed from the folder");
+                    sb.append("file \"" + previousFileArray[i].getName() +"\" removed from the folder");
                 }
             }
         }

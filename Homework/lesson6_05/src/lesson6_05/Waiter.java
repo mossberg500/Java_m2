@@ -23,8 +23,6 @@ public class Waiter implements Runnable{
                 e.printStackTrace();
             }
             System.out.println(name + " был вызов метода notify: " + sdf.format(System.currentTimeMillis()));
-            // обработаем наше сообщение
-            System.out.println(name + " : " );
             tablo.Tablo();
             tablo.flag = false;
             tablo.notifyAll();

@@ -22,15 +22,13 @@ public class Notifier implements Runnable {
 			
 			if(tablo.tabloFlag()) {
 			
-        	System.out.println(name + " стартовал");
+        	System.out.println(name + " starting");
         	try {
         		Thread.sleep(1000);
         		synchronized (tablo) {
-        			//  msg.setMsg(name + " поток Notifier отработал");
-        			//  msg.notify();
         			tablo.notifyAll();
         			tablo.flag = false;
-        			System.out.println(name + " поток Notifier отработал");
+        			System.out.println(name + " thread Notifier worked");
         			tablo.wait();
         		}
         	} catch (InterruptedException e) {
