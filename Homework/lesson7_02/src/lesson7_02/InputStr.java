@@ -20,6 +20,12 @@ public class InputStr implements Callable<byte[]> {
 		this.filein = filein;
 	}
 
+	public synchronized int progress(int i) throws IOException {
+		path = Paths.get(filein);
+		int n = Files.readAllBytes(path).length;
+		return (int) (Math.ceil(i / n * 100));
+	}
+
 	public byte[] fileCopyToBuffer(String filein) throws IOException {
 		System.out.println(" Start coping [ ");
 		File in = new File(filein);
@@ -33,9 +39,9 @@ public class InputStr implements Callable<byte[]> {
 			for (; (readByte = bis.read()) != -1;) {
 				bytes[i] = (byte) readByte;
 				i += 1;
-				System.out.print("##");
+				System.out.print(" ## " + progress(i) + "%");
 			}
-			System.out.println(" array of " + bytes.length + "  bytes");
+			System.out.println(" array " + i + " of " + bytes.length + "  bytes");
 			return bytes;
 		} catch (IOException e) {
 			throw e;
