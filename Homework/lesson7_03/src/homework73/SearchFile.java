@@ -55,6 +55,7 @@ public class SearchFile implements Runnable {
 		searching(files);
 		try {
 			service.awaitTermination(15, TimeUnit.SECONDS);
+			
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
