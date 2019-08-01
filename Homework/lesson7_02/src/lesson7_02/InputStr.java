@@ -20,7 +20,33 @@ public class InputStr implements Callable<byte[]> {
 		this.filein = filein;
 	}
 
-	public synchronized int progress(int i) throws IOException {
+	
+	
+	public Path getPath() {
+		return path;
+	}
+
+
+
+	public void setPath(Path path) {
+		this.path = path;
+	}
+
+
+
+	public String getFilein() {
+		return filein;
+	}
+
+
+
+	public void setFilein(String filein) {
+		this.filein = filein;
+	}
+
+
+
+	public  int progress(int i) throws IOException {
 		path = Paths.get(filein);
 		int n = Files.readAllBytes(path).length;
 		return (int) (Math.ceil(i / n * 100));

@@ -18,6 +18,32 @@ public class OutputStr implements Runnable {
 		this.bytes = bytes;
 		workFile = copyDirectory + "\\" + this.path.getFileName();
 	}
+	
+
+	public Path getPath() {
+		return path;
+	}
+
+
+	public void setPath(Path path) {
+		this.path = path;
+	}
+
+
+	public byte[] getBytes() {
+		return bytes;
+	}
+
+
+	public void setBytes(byte[] bytes) {
+		this.bytes = bytes;
+	}
+
+
+	public String getWorkFile() {
+		return workFile;
+	}
+
 
 	public static void bufferCopyToFile(byte[] bytes, String workFile) throws IOException {
 
