@@ -25,7 +25,7 @@ public class First {
 
     public void modifiedList(){
         List<Integer> modifyList = new ArrayList<>();
-        List<Integer> modify = new ArrayList<>();
+    
 
         addToList();
         System.out.println("Before modified " + list);

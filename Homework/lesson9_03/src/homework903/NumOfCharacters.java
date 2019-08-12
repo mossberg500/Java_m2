@@ -8,7 +8,7 @@ import java.util.*;
 public class NumOfCharacters {
 
     private String path;
-    private SortedSet<Character> characters;
+//    private SortedSet<Character> characters;
     private List<Chars> chars;
     private Map<Character, Integer> countMap;
 

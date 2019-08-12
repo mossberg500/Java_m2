@@ -3,12 +3,11 @@ package homework904;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Queue;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+
 
 public class Machine {
 
-    private Deque<Human> queueByCola;
+    private Deque<Human> dequeByCola;
     private int quantity;
 
     public Machine() {
@@ -17,34 +16,34 @@ public class Machine {
 
     public Machine(int quantity) {
         this.quantity = quantity;
-        queueByCola = new ArrayDeque<>();
-        queueByCola.addLast(new Human("Sheldon"));
-        queueByCola.addLast(new Human("Leonard"));
-        queueByCola.addLast(new Human("Volovitc"));
-        queueByCola.addLast(new Human("Kutrapalli"));
-        queueByCola.addLast(new Human("Penny"));
+        dequeByCola = new ArrayDeque<>();
+        dequeByCola.addLast(new Human("Sheldon"));
+        dequeByCola.addLast(new Human("Leonard"));
+        dequeByCola.addLast(new Human("Volovitc"));
+        dequeByCola.addLast(new Human("Kutrapalli"));
+        dequeByCola.addLast(new Human("Penny"));
     }
 
-    public Queue<Human> getQueueByCola() {
-        return queueByCola;
+    public Deque<Human> getDequeByCola() {
+        return dequeByCola;
     }
 
     public Deque<Human> giveCola() {
         int counter = 0;
         while (counter < quantity) {
-            Human client = queueByCola.pollFirst();
+            Human client = dequeByCola.pollFirst();
             if (null != client) {
                 try {
                     Human newClient = (Human) client.clone();
-                    queueByCola.addLast(client);
-                    queueByCola.addLast(newClient);
+                    dequeByCola.addLast(client);
+                    dequeByCola.addLast(newClient);
                     counter++;
                 } catch (CloneNotSupportedException ex) {
-                    Logger.getLogger(Machine.class.getName()).log(Level.SEVERE, null, ex);
+                    ex.printStackTrace();
                 }
             }
         }
-        return queueByCola;
+        return dequeByCola;
     }
 
 
