@@ -4,9 +4,8 @@ import java.io.*;
 import java.util.Map;
 import java.util.TreeMap;
 
-public class DictionaryCreator implements Serializable {
+public class DictionaryCreator {
 
-	private static final long serialVersionUID = 1L;
 	private TreeMap<String, String> dictionary;
 	private String pathDictionary;
 
@@ -18,7 +17,6 @@ public class DictionaryCreator implements Serializable {
 		this.dictionary = new TreeMap<String, String>();
 	}
 
-	
 	public TreeMap<String, String> readDictionary() {
 
 		try (ObjectInputStream reader = new ObjectInputStream(new FileInputStream(pathDictionary))) {
